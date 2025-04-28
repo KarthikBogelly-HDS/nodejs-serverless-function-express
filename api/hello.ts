@@ -1,12 +1,11 @@
-let serverStartTime = Date.now();  // Track when the function was first invoked
-
 export default function handler(req, res) {
-  const now = Date.now();
-  const elapsedMs = now - serverStartTime;
+  const currentRequestTime = Date.now();
+  const coldStartDuration = 1500; // 1.5 seconds
 
-  if (elapsedMs < 1500) {  // Check if less than 1.5 seconds have passed
-    res.status(404).send('Server starting...');  // Return 404 during cold start
+  // Simulate the "cold start" by waiting for 1.5 seconds on each request
+  if (currentRequestTime % coldStartDuration < coldStartDuration) {
+    res.status(404).send('Server starting...');
   } else {
-    res.status(200).send('Ready!');  // Return 200 after warm-up period
+    res.status(200).send('Ready!');
   }
 }
