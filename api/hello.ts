@@ -1,14 +1,8 @@
 export default function handler(req, res) {
-  const startTime = Date.now();
-
-  // Simulate the delay (cold start) for the first 1.5 seconds
+  res.status(404).send('Server starting...');  // Return 404 immediately
+  
+  // Set a timeout to return 200 after 1 second
   setTimeout(() => {
-    const elapsed = Date.now() - startTime;
-    
-    if (elapsed < 1500) {
-      res.status(404).send('Server starting...');
-    } else {
-      res.status(200).send('Ready!');
-    }
-  }, 1500);  // Delay by 1.5 seconds before responding
+    res.status(200).send('Ready!');
+  }, 1000);  // 1 second delay
 }
