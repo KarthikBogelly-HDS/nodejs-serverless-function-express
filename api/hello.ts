@@ -10,7 +10,7 @@ export default function handler(req, res) {
   const elapsedTime = Date.now() - coldStartTimestamp;
 
   // If it's within the first 1 second, return a 404 response
-  if (elapsedTime < 1500) {
+  if (elapsedTime < 3000) {
     res.status(404).send('Server starting...');
   } else {
     // After 1 second, return 200
