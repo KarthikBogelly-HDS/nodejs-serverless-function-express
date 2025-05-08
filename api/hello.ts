@@ -11,7 +11,7 @@ export default function handler(req, res) {
 
   // If it's within the first 1 second, return a 404 response
   if (elapsedTime < 1500) {
-    res.status(404).send('Server starting...');
+    res.status(204).send('Server starting...');
   } else {
     // After 1 second, return 200
     res.status(200).send('Ready!');
